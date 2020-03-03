@@ -5,5 +5,5 @@ gRNAsearch.egg-info/SOURCES.txt
 gRNAsearch.egg-info/dependency_links.txt
 gRNAsearch.egg-info/requires.txt
 gRNAsearch.egg-info/top_level.txt
-search/__init__.py
-search/gRNA.py
+grnasearch/__init__.py
+grnasearch/gRNA.py

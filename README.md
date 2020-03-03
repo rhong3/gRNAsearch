@@ -1,7 +1,7 @@
 # **Search for guide RNA sites in PCR tags**
 ### Usage
  - Install the package version through pip `pip install gRNAsearch `
- - `from gRNAsearch.search import search`
+ - `from grnasearch import search`
  - `summary, frames = search(syn="../seq.fa", tag="../tag.csv", save=True, output_dir="~", output_name="gRNA")`
 ### Parameters 
 `search(syn, tag, save=True, output_dir='~', output_name="gRNA"):`

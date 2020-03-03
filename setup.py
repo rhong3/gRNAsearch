@@ -7,7 +7,7 @@ requirements = ["biopython>=1.76", "numpy>=1.17.5", "pandas>=0.23"]
 
 setup(
     name="gRNAsearch",
-    version="0.0.1",
+    version="0.0.2",
     author="Runyu Hong",
     author_email="Runyu.Hong@nyu.edu",
     description="Search for guide RNA sites in PCR tags",
