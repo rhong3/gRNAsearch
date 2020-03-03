@@ -12,18 +12,14 @@ def search(syn, tag, save=True, output_dir="~", output_name="gRNA"):
             rev_com_seq = str(ori_seq.reverse_complement())
     except FileNotFoundError:
         print("Sequence file not found!")
-        exit(1)
     except:
         print("Sequence file error!")
-        exit(1)
     try:
         dic = pd.read_csv(tag, header=0)
     except FileNotFoundError:
         print("PCR Tag file not found!")
-        exit(1)
     except:
         print("PCR Tag file error!")
-        exit(1)
 
     total_len = len(ori_seq)
     foundlist = []
