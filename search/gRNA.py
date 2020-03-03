@@ -5,7 +5,7 @@ import pandas as pd
 import re
 
 
-def search(syn, tag, output_dir, inter=True, output_name="gRNA"):
+def search(syn, tag, save=True, output_dir="~", output_name="gRNA"):
     try:
         for record in SeqIO.parse(syn, "fasta"):
             ori_seq = Seq(str(record.seq), IUPAC.unambiguous_dna)
@@ -46,8 +46,6 @@ def search(syn, tag, output_dir, inter=True, output_name="gRNA"):
         else:
             print(idx, row["Reverse Syn"], " not found!")
     frames = pd.DataFrame(foundlist, columns=['Amplicon', 'syn_FWD_start', 'syn_FWD_end', 'strand', 'WT_5_to_3'])
-    if inter:
-        frames.to_csv("{}/{}_intermediate.csv".format(output_dir, output_name), index=False)
 
     output = []
     for idx, row in frames.iterrows():
@@ -112,6 +110,10 @@ def search(syn, tag, output_dir, inter=True, output_name="gRNA"):
 
     summary = pd.DataFrame(output,
                            columns=['5_to_3_sequence', 'pattern', 'strand', 'amplicon', 'syn_FWD_start', 'syn_FWD_end'])
-    summary.to_csv("{}/{}_search.csv".format(output_dir, output_name), index=False)
-    print("Done! Results are in {}/{}_search.csv".format(output_dir, output_name))
-    exit(0)
+    if save:
+        frames.to_csv("{}/{}_intermediate.csv".format(output_dir, output_name), index=False)
+        summary.to_csv("{}/{}_search.csv".format(output_dir, output_name), index=False)
+        print("Done! Results are in {}".format(output_dir))
+    return summary, frames
+
+
